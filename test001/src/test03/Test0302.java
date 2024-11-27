@@ -21,7 +21,7 @@ public  int binaryToDecimal(String inMsg){
 
     public static void main(String[] args) {
         Test0302 test0302 = new Test0302();
-        int i = test0302.binaryToDecimal("10101");
-        System.out.println("10101的十进制为" + i);
+        int i = test0302.binaryToDecimal("10101001");
+        System.out.println("10101001的十进制为" + i);
     }
 }
