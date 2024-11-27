@@ -15,8 +15,8 @@ public  int binaryToDecimal(String inMsg){
         //这个地方不对 明天查一查
 
     }
-    System.out.println((mul));
-    return mul;
+    System.out.println((x));
+    return x;
 }
 
     public static void main(String[] args) {
