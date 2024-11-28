@@ -1,6 +1,6 @@
 package test03;
 //局部内部类的使用
-public class Tes0307 {
+public class Test0307 {
     public static void main(String[] args) {
         A a = new A();
         a.f1();
