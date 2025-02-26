@@ -94,8 +94,8 @@ class Test{
     String str = new String("hsp");
     final char[] ch = {'j','a','v','a'};
     public void change(String str,char ch[]){
-        str = "java";//首先这个str是创建于数据池中，其次他只作用于局部中
-        ch[0] = 'h';
+        str = "java";//首先这个str是创建于数据池中，其次他只作用于““局部中””
+        ch[0] = 'h';//直接吧堆中的“java”进行修改
     }
 
     public static void main(String[] args) {
@@ -103,7 +103,7 @@ class Test{
         System.out.println(test.str);
         System.out.println(test.ch);
         System.out.println("====================");
-        test.change(test.str,test.ch);
+        test.change(test.str,test.ch);//调用方法 产生新栈
         System.out.println(test.str);
         System.out.println(test.ch);
     }
