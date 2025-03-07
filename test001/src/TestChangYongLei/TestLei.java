@@ -13,6 +13,10 @@ import java.util.zip.DataFormatException;
 public class TestLei {
     //常用类的练习
     public static void main(String[] args) {
+
+        //返回当前时间距离1970-1-1的毫秒数
+        System.out.println(System.currentTimeMillis());
+        System.out.println("----------------------");
         unpacking unpacking = new unpacking();
         boolean b = unpacking.PanDuan(1, 1);
         System.out.println(b);
