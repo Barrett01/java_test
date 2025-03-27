@@ -28,6 +28,7 @@ public class HashSetIncrement {
         for (int i = 1; i <= 12; i++) {
             hh.add(new DA(i));
         }
+        //只要增加一个元素 -》 node  就算增加一个{超过12个就可以扩容}
 //        for (int i = 0; i < 8; i++) {
 //            hh.add(new DB(i));
 //        }
@@ -43,12 +44,22 @@ class DA{
 
     @Override
     public String toString() {
-        return "现象";
+        return "DA{" +
+                "n=" + n +
+                '}';
     }
 
     @Override
     public int hashCode() {
         return 100;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DA da = (DA) o;
+        return n == da.n;
     }
 }
 
