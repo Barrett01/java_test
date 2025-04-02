@@ -36,6 +36,15 @@ public class MapExercise {
                     System.out.println(person1.getName() + "是月薪:"+person1.getSalary());
                 }
             }
+            //老师思路：
+        Set set1 = map.keySet();
+        for (Object key : set1) {
+            staff emp = (staff)map.get(key);
+            if (emp.getSalary() >= 18000) {
+                System.out.println(emp.getName());
+            }
+
+        }
 
 
     }
