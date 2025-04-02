@@ -33,7 +33,7 @@ public class MapExercise {
                 Map.Entry entry1 = (Map.Entry) object;
                 staff person1 = (staff) entry1.getValue();
                 if (person1.getSalary() >= 18000) {
-                    System.out.println(person1.getName() + "是月薪大于15000的");
+                    System.out.println(person1.getName() + "是月薪:"+person1.getSalary());
                 }
             }
 
