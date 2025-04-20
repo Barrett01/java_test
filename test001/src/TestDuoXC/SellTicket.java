@@ -22,13 +22,13 @@ class SellTicket01 implements Runnable{
 
         while(true){
             try {
-                Thread.sleep(1000);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
             ticket--;
             System.out.println("还有多少票："+ticket);
-            if(ticket == 0){
+            if(ticket <= 0){
                 break;
             }
         }
