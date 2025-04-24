@@ -12,6 +12,6 @@ public class Properties_ {
         System.out.println(prop.getProperty("user"));
         System.out.println(prop.getProperty("pws"));
         prop.list(System.out);
-        
+
     }
 }
