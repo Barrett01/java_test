@@ -16,6 +16,56 @@ public class ReflectionUtilsfans {
 
     }
 
+    //第二组API
+    @Test
+    public void api_02() throws ClassNotFoundException {
+        //得到Class对象
+        Class<?> aClass = Class.forName("FanS.PersonFs");
+//        1,getModifiers:以int形式返回修饰符【说明：默认修饰符是0，public是1，private是2，protected是4，static是8，final是16】public（1）+static（8）= 9
+//        2,getType：以Class形式返回类型（属性对应类的class对象）
+//        3,getName：返回属性名
+        //获取本类的所有属性
+        Field[] declaredFields = aClass.getDeclaredFields();
+        for (Field declaredField : declaredFields) {
+            System.out.println("本类的所有属性：" + declaredField.getName() + "\t该类的修饰符：" + declaredField.getModifiers()
+                    + "\t该属性的类型:" + declaredField.getType());
+        }
+
+        System.out.println("-------------------");
+
+        //1，getModifiers：以int形式返回修饰符[说明：默认修饰符是0，public是1，private是2，protected是4，static是8，final是16]
+        // 2，getReturnType：以Class形式获取返回类型
+        //3，getName：返回方法名
+        //4，getParameterTypes：以class[]返回参数类型数组
+        //获取本类的所有方法
+        Method[] declaredMethods = aClass.getDeclaredMethods();
+        for (Method declaredMethod : declaredMethods) {
+            System.out.println("该类的所有方法：" + declaredMethod.getName() +
+                    "\t该类的修饰符：" + declaredMethod.getModifiers() +
+                    "\t该类的返回类型：" + declaredMethod.getReturnType());
+            Class<?>[] parameterTypes = declaredMethod.getParameterTypes();
+            for (Class<?> parameterType : parameterTypes) {
+                System.out.println("该方法的形参："+parameterType);
+            }
+        }
+        System.out.println("-----------------");
+        //构造器
+//        1，getModifiers：以int形式返回修饰符
+//        2，getName：返回构造器名（全类名）
+//        3，getparamaterTypes:以Class[]返回参数类型数组
+        Constructor<?>[] declaredConstructors = aClass.getDeclaredConstructors();
+        for (Constructor declaredConstructor : declaredConstructors) {
+            System.out.println(declaredConstructor.getName()+"构造器返回修饰符："+
+                    declaredConstructor.getModifiers());
+            Class[] parameterTypes = declaredConstructor.getParameterTypes();
+            for (Class<?> parameterType : parameterTypes) {
+                System.out.println("构造器返回参数："+parameterType);
+            }
+        }
+
+    }
+
+
     //第一组API
     @Test
     public void api_01() throws ClassNotFoundException {
@@ -34,7 +84,7 @@ public class ReflectionUtilsfans {
             System.out.println(field.getName());
         }
         System.out.println("----------------");
-//        4,getDeclared Fields：获取本类中所有属性
+//        4,getDeclaredFields：获取本类中所有属性
         Field[] declaredFields = personCls.getDeclaredFields();
         for (Field field : declaredFields) {
             System.out.println("\t" + field.getName());
@@ -65,11 +115,11 @@ public class ReflectionUtilsfans {
         System.out.println("---------------------");
 //        9,getPackage：以Package形式返回包信息
         Package aPackage = personCls.getPackage();
-        System.out.println("返回包信息:"+aPackage.getName());
+        System.out.println("返回包信息:" + aPackage.getName());
         System.out.println("--------------");
 //        10,getSuperClass：以Class形式返回父类信息
         Class<?> superclass = personCls.getSuperclass();
-        System.out.println("父类包的信息"+superclass.getName());
+        System.out.println("父类包的信息" + superclass.getName());
         System.out.println("------------");
 //        11,getInterfaces：以Class形式返回接口信息
         Class<?>[] interfaces = personCls.getInterfaces();
@@ -98,16 +148,18 @@ class FsA {
         this.hobby = hobby;
     }
 }
-interface JkFs{
+
+interface JkFs {
     public void jkfs();
 }
+
 @Disabled
-class PersonFs extends FsA  implements JkFs{
+class PersonFs extends FsA implements JkFs {
     //四种访问权限的属性和四种反问权限的方法
     public String name;
     protected int age;
-    String job;
-    private double sal;
+    static String job;
+    private static double sal;
 
     public PersonFs() {
     }
@@ -119,19 +171,19 @@ class PersonFs extends FsA  implements JkFs{
         this.job = job;
     }
 
-    private PersonFs(String name) {
+    private  PersonFs(String name) {
         this.name = name;
     }
 
-    public void m1() {
+    public final void m1() {
 
     }
 
-    protected void m2() {
-
+    protected String m2(String name, int age, double sal, String job) {
+        return null;
     }
 
-    void m3() {
+    void m3(String name) {
 
     }
 
