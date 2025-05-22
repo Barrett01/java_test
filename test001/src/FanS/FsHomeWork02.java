@@ -16,7 +16,7 @@ public class FsHomeWork02 {
         String fileAllpath  = "D:\\text\\mynew.txt";
 
         Object o = declaredConstructor.newInstance(fileAllpath);
-        Method createNewFile = aClass.getMethod("createNewFile");
+        Method createNewFile = aClass.getMethod("createNewFile");//主要是这里调用什么方法
         createNewFile.invoke(o);//创建了文件
         System.out.println("文件创建成功"+fileAllpath);
     }
