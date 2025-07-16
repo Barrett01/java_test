@@ -63,11 +63,11 @@ public class C3P0_ {
     public void testC3P0_2() throws SQLException {
         ComboPooledDataSource comboPooledDataSource = new ComboPooledDataSource("hh_edu");
         long start = System.currentTimeMillis();
-        for (int i = 0; i < 5000; i++) {
+        for (int i = 0; i < 500000; i++) {
             Connection connection = comboPooledDataSource.getConnection();
             connection.close();
         }
         long end = System.currentTimeMillis();
-        System.out.println("花费"+(end-start)+"ms"); //花费252ms
+        System.out.println("花费"+(end-start)+"ms"); //花费252ms||花费1317ms
     }
 }
