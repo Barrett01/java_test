@@ -1,18 +1,13 @@
 package testJDBC.JDBCApache;
 
 
-import java.sql.Connection;
+import java.sql.*;
 
-
+import java.time.LocalDateTime;
 import org.junit.jupiter.api.Test;
 import testJDBC.JDBCutilesDruid.JDBCUtilByDruid;
-
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-
-import java.util.Date;
 import java.util.Scanner;
 
 public class jdbcApache {
@@ -52,7 +47,8 @@ public class jdbcApache {
                 Date borndate = rs.getDate("borndate");
                 String phone = rs.getString("phone");
 
-                list.add(new Actor(id,name,sex,borndate,phone));
+//                list.add(new Actor(id,name,sex,borndate,phone));//为了DBUtils 的日期兼容性 这里暂时注销
+                //如果要使用，请把Actor里面的LocalDateTime改成date格式
             }
             for (Actor actor : list) {
                 System.out.println(actor.getId() +"\t"+actor.getName()+"\t"+actor.getSex());
@@ -62,7 +58,6 @@ public class jdbcApache {
         }finally {
             JDBCUtilByDruid.close(conn,ps,rs);
         }
-
 
 
     }

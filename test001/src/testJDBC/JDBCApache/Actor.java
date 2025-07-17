@@ -1,17 +1,18 @@
 package testJDBC.JDBCApache;
 
-import java.util.Date;
+
+import java.time.LocalDateTime;
 
 public class Actor {
     private String name;
     private Integer id;
     private String sex;
-    private Date borndate;
+    private LocalDateTime borndate;
     private String phone;
     public Actor() {//需要一个无参构造器，反射需要
     }
 
-    public Actor(Integer id, String sex, String name, Date borndate, String phone) {
+    public Actor(Integer id, String sex, String name, LocalDateTime borndate, String phone) {
         this.id = id;
         this.sex = sex;
         this.name = name;
@@ -43,11 +44,11 @@ public class Actor {
         this.name = name;
     }
 
-    public Date getBorndate() {
+    public LocalDateTime getBorndate() {
         return borndate;
     }
 
-    public void setBorndate(Date borndate) {
+    public void setBorndate(LocalDateTime borndate) {
         this.borndate = borndate;
     }
 
