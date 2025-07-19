@@ -4,6 +4,8 @@ package testJDBC.JDBCApache;
 import java.sql.*;
 
 import java.time.LocalDateTime;
+
+import org.apache.commons.dbutils.QueryRunner;
 import org.junit.jupiter.api.Test;
 import testJDBC.JDBCutilesDruid.JDBCUtilByDruid;
 import java.time.LocalDateTime;
@@ -58,7 +60,6 @@ public class jdbcApache {
         }finally {
             JDBCUtilByDruid.close(conn,ps,rs);
         }
-
-
     }
+
 }

@@ -1,7 +1,10 @@
 package testJDBC.JDBCApache;
 
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
+import org.junit.jupiter.api.Test;
 import testJDBC.JDBCutilesDruid.JDBCUtilByDruid;
 
 import java.sql.Connection;
@@ -59,4 +62,46 @@ public class DBUtils_USE {
     //释放资源
         JDBCUtilByDruid.close(connection,null,null);
     }
+
+    //演示apche-dbutils +druid完成 返回结果是单行记录（单个对象）
+    @Test
+    public void testQuerySingle() throws SQLException {
+        //链接
+        Connection connection = JDBCUtilByDruid.getConnection();
+        //创建QueryRunner
+        QueryRunner queryRunner = new QueryRunner();
+        //sql语句
+        String sql = "select * from actor where id >= ?";
+
+        Actor query = queryRunner.query(connection, sql, new BeanHandler<Actor>(Actor.class), 3);
+        System.out.println(query);
+        JDBCUtilByDruid.close(connection,null,null);
+    }
+    //演示apache-dbutils + druid 完成查询结果是单行单列 返回是object
+    @Test
+    public void testScalar() throws SQLException {
+        Connection connection = JDBCUtilByDruid.getConnection();
+        QueryRunner queryRunner = new QueryRunner();
+        String sql = "select name from actor where id >= ?";
+        Object oj
+                = queryRunner.query(connection, sql, new ScalarHandler(), 3);
+        System.out.println(oj);
+        JDBCUtilByDruid.close(connection,null,null);
+    }
+    //演示apache-dbutils + druid 完成 dml (update, insert ,delete)
+    @Test
+    public void testDML() throws SQLException {
+        Connection connection = JDBCUtilByDruid.getConnection();
+        QueryRunner queryRunner = new QueryRunner();
+        String sql = "insert into actor values(null,?,?,?,?)";
+        String sql2 = "update actor set name = ? where id = ?";
+        String sql3 = "delete from actor where id = ?";
+
+//        int affectedRow = queryRunner.update(connection, sql, "林青霞", "女", "1996-10-10", "1161983126");
+//        int affectedRow = queryRunner.update(connection, sql2, "至尊宝", 7);
+        int affectedRow = queryRunner.update(connection, sql3,  7);
+        System.out.println(affectedRow > 0 ? "操作成功" : "操作未生效");
+        JDBCUtilByDruid.close(connection,null,null);
+    }
+
 }
